@@ -7,11 +7,8 @@
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --entry api/hello.ts",
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
