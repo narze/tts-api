@@ -5,12 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TTS API</title>
-    <script>
-      let audio = new Audio('/api/tts?text=hello&lang=th-TH');
-      audio.play();
-    </script>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <h1><a href="/api/tts?text=hello&lang=th-TH">Hello</a></h1>
+    <script>
+      let audio = new Audio('/api/tts?text=hello&lang=th-TH');
+
+      window.onload = function() {
+        console.log('onload');
+        document.body.addEventListener('click', e => {
+          console.log({ e });
+          audio.play();
+        });
+      };
+    </script>
   </body>
 </html>
