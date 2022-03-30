@@ -7,10 +7,12 @@ const tts = (req: VercelRequest, res: VercelResponse) => {
   if (req.method === 'GET') {
     const reqText: string = req.query.text as string
     const reqLang: string = req.query.lang as string || "th-TH"
+    const slow: string = req.query.slow as string
 
     if (reqText !== '') {
       const resp = googleTTS.getAudioUrl(reqText, {
         lang: reqLang,
+        slow: !!slow
       })
 
       axios.get(resp, { responseType: 'arraybuffer' }).then((response) => {
