@@ -14,17 +14,16 @@
     </style>
   </head>
   <body>
-    <h1><a href="/api/tts?text=hello&lang=th-TH">Hello</a></h1>
+    <h3>Generate speech link from text</h3>
+    <input type="text" id="mySelect" onchange="toSpeech()"> 
+    <div id="speech"></div>
     <script>
-      let audio = new Audio('/api/tts?text=hello&lang=th-TH');
-
-      window.onload = function() {
-        console.log('onload');
-        document.body.addEventListener('click', e => {
-          console.log({ e });
-          audio.play();
-        });
-      };
-    </script>
+      function toSpeech() {
+        var text = document.getElementById("mySelect").value;
+        var ttsPath = "https://tts-api-git-main-notnarze.vercel.app/api/tts?text=" + text + "&lang=th-TH";
+        document.getElementById("speech").innerHTML +="<a href='"+ttsPath+"'>"+text+"</a>" ;
+      
+      }
+      </script>
   </body>
 </html>
