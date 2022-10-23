@@ -15,11 +15,11 @@
   </head>
   <body>
     <h3>Generate speech link from text</h3>
-    <input type="text" id="mySelect" onchange="toSpeech()"> 
+    <input type="text" id="myText" onchange="toSpeech()"> 
     <div id="speech"></div>
     <script>
       function toSpeech() {
-        var text = document.getElementById("mySelect").value;
+        var text = document.getElementById("myText").value;
         var ttsPath = "https://tts-api-git-main-notnarze.vercel.app/api/tts?text=" + text + "&lang=th-TH";
         document.getElementById("speech").innerHTML +="<a href='"+ttsPath+"'>"+text+"</a>" ;
       
