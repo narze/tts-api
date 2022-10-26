@@ -7,23 +7,93 @@
     <title>TTS API</title>
     <style>
       body {
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
+        text-align: center;
+        font-family: Roboto;
+        background-image: linear-gradient(
+          to bottom,
+          #432371,
+          #4e2971,
+          #582f72,
+          #603572,
+          #683c73,
+          #774274,
+          #844a75,
+          #905276,
+          #a45e76,
+          #b46b76,
+          #c27a77,
+          #cc8b79
+        );
+      }
+
+      div#speech {
+        margin-top: 24px;
+      }
+
+      h3 {
+        font-size: 1.5em;
+        color: white;
+      }
+
+      p {
+        font-size: 1em;
+        color: white;
+      }
+      input {
+        width: 30%;
+        height: 25px;
+        margin: 0 auto;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px 0;
+      }
+
+      audio::-webkit-media-controls-panel {
+        background-color: #cc8b79;
+      }
+
+      a {
+        font-size: 1.25em;
+        color: white;
       }
     </style>
   </head>
   <body>
     <h3>Generate speech link from text</h3>
-    <input type="text" id="myText" onchange="toSpeech()"> 
+    <input
+      type="text"
+      id="myText"
+      placeholder="input your text"
+      onchange="toSpeech()"
+      onkeydown="clerSpeech()"
+    />
+
     <div id="speech"></div>
     <script>
       function toSpeech() {
-        var text = document.getElementById("myText").value;
-        var ttsPath = "https://tts-api-git-main-notnarze.vercel.app/api/tts?text=" + text + "&lang=th-TH";
-        document.getElementById("speech").innerHTML +="<a href='"+ttsPath+"'>"+text+"</a>" ;
-      
+        var text = document.getElementById('myText').value;
+        var ttsPath =
+          'https://tts-api-git-main-notnarze.vercel.app/api/tts?text=' +
+          text +
+          '&lang=th-TH';
+        document.getElementById('speech').innerHTML +=
+          "<audio controls> <source src='" + ttsPath + "'> </audio>";
+        document.getElementById('speech').innerHTML +=
+          "<p>Link speech : <a href='" +
+          ttsPath +
+          "'>" +
+          text +
+          '</a>' +
+          '</p>';
       }
-      </script>
+
+      function clerSpeech() {
+        let counterChild = document.getElementById('speech').childElementCount;
+        if (counterChild > 0) {
+          document.getElementById('speech').innerHTML = '';
+        }
+      }
+    </script>
   </body>
 </html>
