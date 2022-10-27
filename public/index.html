@@ -69,7 +69,7 @@
       id="myText"
       placeholder="input your text"
       onchange="toSpeech()"
-      onkeydown="clerSpeech()"
+      onkeydown="clearSpeech()"
     />
 
     <div id="speech"></div>
@@ -91,7 +91,7 @@
           '</p>';
       }
 
-      function clerSpeech() {
+      function clearSpeech() {
         let counterChild = document.getElementById('speech').childElementCount;
         if (counterChild > 0) {
           document.getElementById('speech').innerHTML = '';
